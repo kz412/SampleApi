@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SampleApi.Services;
 
 namespace mini_umb
 {
@@ -22,6 +22,7 @@ namespace mini_umb
         {
 
             services.AddControllersWithViews();
+            services.AddScoped<IOperationsService, OperationsService>();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
