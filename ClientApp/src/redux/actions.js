@@ -1,5 +1,6 @@
-import { SET_OPERATION, SET_OPERAND, CLEAR } from "./actionTypes";
-import { add, subtract, divide, multiply } from "../services/api";
+import { SET_OPERATION, SET_OPERAND, CLEAR, LOGIN_SUCCESS, LOGIN_FAILURE } from "./actionTypes";
+import { add, subtract, divide, multiply } from "../services/calculator";
+import { authenticate } from "../services/auth";
 
 export const addClicked = () => ({
     type: SET_OPERATION,
@@ -36,6 +37,25 @@ export const clearClicked = () => ({
 export const setOperand = (value) => ({
     type: SET_OPERAND,
     payload: { value }
+});
+
+export const submitLogin = ({username, password}) => {
+    return dispatch => {
+        authenticate(username, password)
+            .then(
+                user => dispatch(loginSuccess(user)),
+                error => dispatch(loginFailure(error)))
+    }
+}
+
+export const loginSuccess = (user) => ({
+    type: LOGIN_SUCCESS,
+    payload: { user }
+});
+
+export const loginFailure = (error) => ({
+    type: LOGIN_FAILURE,
+    payload: { error }
 });
 
 export const equalsClicked = (a, b, op) => {

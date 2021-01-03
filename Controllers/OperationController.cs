@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SampleApi.Services;
 
 namespace mini_umb.Controllers
 {
+    [Authorize]
     public class OperationController : ControllerBase
     {
         private readonly IOperationsService _operationsService;

@@ -1,9 +1,12 @@
-import { SET_OPERAND, SET_OPERATION, CLEAR } from "../actionTypes";
+import { SET_OPERAND, SET_OPERATION, CLEAR, LOGIN, LOGIN_FAILURE, LOGIN_SUCCESS } from "../actionTypes";
 
 const defaultState = {
     operandA: null,
     operandB: 0,
-    operation: null
+    operation: null,
+    username: null,
+    password: null,
+    loggedIn: false
 }
 
 export default function (state = defaultState, action) {
@@ -17,9 +20,18 @@ export default function (state = defaultState, action) {
         case CLEAR: {
             return { ...state, operation: null, operandA: 0, operandB: 0 };
         }
-        
-        default: {
-            return { ...state };
+        case LOGIN: {
+            console.log(action.payload);
+            break;
+        }
+        case LOGIN_SUCCESS: {
+            return { ...state, loggedIn: true }
+        }
+        case LOGIN_FAILURE: {
+            alert(`Login failed: ${action.payload.error}`);
+            break;
         }
     }
+
+    return { ...state };
 }

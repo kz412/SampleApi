@@ -23,11 +23,18 @@ namespace mini_umb
 
             services.AddControllersWithViews();
             services.AddScoped<IOperationsService, OperationsService>();
+            services.AddScoped<IUserService, UserService>();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/build";
+            });
+
+            services.AddAuthentication().AddJwtBearer(options =>
+            {
+                options.Audience = "https://localhost:5001";
+                options.Authority = "https://localhost:5001";
             });
         }
 
