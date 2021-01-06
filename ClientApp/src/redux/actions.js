@@ -1,6 +1,7 @@
 import { SET_OPERATION, SET_OPERAND, CLEAR, LOGIN_SUCCESS, LOGIN_FAILURE } from "./actionTypes";
 import { add, subtract, divide, multiply } from "../services/calculator";
 import { authenticate } from "../services/auth";
+import { push } from "react-router-redux";
 
 export const addClicked = () => ({
     type: SET_OPERATION,
@@ -43,7 +44,7 @@ export const submitLogin = ({username, password}) => {
     return dispatch => {
         authenticate(username, password)
             .then(
-                user => dispatch(loginSuccess(user)),
+                user =>  dispatch(loginSuccess(user)),
                 error => dispatch(loginFailure(error)))
     }
 }

@@ -5,6 +5,7 @@ export const authenticate = (username, password) => fetch('/auth/authenticate', 
 })
     .then(handleResponse)
     .then(user => {
+        console.log('user: ', user);
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('user', JSON.stringify(user));
 
@@ -14,6 +15,10 @@ export const authenticate = (username, password) => fetch('/auth/authenticate', 
 export const logout = () => {
     // remove user from local storage to log user out
     localStorage.removeItem('user');
+}
+
+export const currentUser = () => {
+    return JSON.parse(localStorage.getItem('user'));
 }
 
 function handleResponse(response) {
@@ -33,4 +38,5 @@ function handleResponse(response) {
         return data;
     });
 }
+
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { setOperand, addClicked, equalsClicked, multiplyClicked, divideClicked, subtractClicked, clearClicked } from "../redux/actions";
 
-const Home = ({
+const Calculator = ({
   setOperand,
   addClicked,
   equalsClicked,
@@ -40,11 +40,11 @@ const Home = ({
     </div>)
 };
 
-const mapStateToProps = state => ({
-  operandA: state.operandA,
-  operandB: state.operandB,
-  operation: state.operation
-});
+function mapStateToProps(state) {
+  const { operandA, operandB, operation } = state.calculator;
+
+  return { operandA, operandB, operation };
+};
 
 export default connect(mapStateToProps, {
   addClicked,
@@ -54,4 +54,4 @@ export default connect(mapStateToProps, {
   divideClicked,
   subtractClicked,
   clearClicked
-})(Home);
+})(Calculator);

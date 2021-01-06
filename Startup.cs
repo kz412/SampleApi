@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using mini_umb.Config;
+using mini_umb.Infrastructure;
 using mini_umb.Services;
 
 namespace mini_umb
@@ -23,18 +25,13 @@ namespace mini_umb
         {
 
             services.AddControllersWithViews();
+            services.AddSingleton(new JwtConfiguration());
             services.AddScoped<IUserService, UserService>();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/build";
-            });
-
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-            {
-                options.Audience = "https://localhost:5001";
-                options.Authority = "https://localhost:5001";
             });
         }
 
@@ -57,7 +54,7 @@ namespace mini_umb
             app.UseSpaStaticFiles();
 
             app.UseRouting();
-            app.UseAuthorization();
+            app.UseMiddleware<JwtMiddleware>();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

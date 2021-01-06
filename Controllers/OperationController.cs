@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using mini_umb.Infrastructure;
 
 namespace mini_umb.Controllers
 {
-    [Authorize]
+    [Authorise]
     public class OperationController : ControllerBase
     {
         public IActionResult Foo(string id) => Ok($"Hello world, {id}");

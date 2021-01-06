@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
-import Calculator from './components/Calculator';
+import Home from './components/Home';
 import Login from './components/Login';
 
 import './custom.css'
@@ -14,7 +14,7 @@ export default class App extends Component {
     return (
       <Layout>
         <BrowserRouter>
-          <Route exact path='/' component={Calculator} />
+          <Route exact path='/' component={Home} />
           <Route path="/login" component={Login}></Route>
         </BrowserRouter>
       </Layout>
