@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using mini_umb.Model;
-using SampleApi.Services;
+using mini_umb.Services;
 
 namespace mini_umb.Controllers
 {
@@ -16,11 +16,11 @@ namespace mini_umb.Controllers
         [HttpPost]
         public IActionResult Authenticate([FromBody] AuthenticateRequest request)
         {
-            var authResult = _userService.Authenticate(request.Username, request.Password);
-            if (authResult == null)
+            var response = _userService.Authenticate(request);
+            if (response == null)
                 return Unauthorized();
 
-            return Ok(new AuthenticateResponse {Token = authResult.Value.Token});
+            return Ok(response);
         }
     }
 }

@@ -1,10 +1,11 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SampleApi.Services;
+using mini_umb.Services;
 
 namespace mini_umb
 {
@@ -22,7 +23,6 @@ namespace mini_umb
         {
 
             services.AddControllersWithViews();
-            services.AddScoped<IOperationsService, OperationsService>();
             services.AddScoped<IUserService, UserService>();
 
             // In production, the React files will be served from this directory
@@ -31,7 +31,7 @@ namespace mini_umb
                 configuration.RootPath = "ClientApp/build";
             });
 
-            services.AddAuthentication().AddJwtBearer(options =>
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
                 options.Audience = "https://localhost:5001";
                 options.Authority = "https://localhost:5001";
@@ -57,7 +57,7 @@ namespace mini_umb
             app.UseSpaStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
