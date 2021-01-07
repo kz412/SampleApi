@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
-using mini_umb.Config;
-using mini_umb.Services;
+using SampleApi.Config;
+using SampleApi.Services;
 
-namespace mini_umb.Infrastructure
+namespace SampleApi.Infrastructure
 {
     public class JwtMiddleware
     {

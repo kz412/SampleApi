@@ -5,10 +5,10 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.IdentityModel.Tokens;
-using mini_umb.Config;
-using mini_umb.Model;
+using SampleApi.Config;
+using SampleApi.Model;
 
-namespace mini_umb.Services
+namespace SampleApi.Services
 {
     public interface IUserService
     {

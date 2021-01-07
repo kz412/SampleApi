@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using mini_umb.Model;
+using SampleApi.Model;
 
-namespace mini_umb.Infrastructure
+namespace SampleApi.Infrastructure
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class AuthoriseAttribute : Attribute, IAuthorizationFilter

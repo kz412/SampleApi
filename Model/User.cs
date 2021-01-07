@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace mini_umb.Model
+namespace SampleApi.Model
 {
     public class User
     {

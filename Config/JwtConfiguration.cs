@@ -1,4 +1,4 @@
-﻿namespace mini_umb.Config
+﻿namespace SampleApi.Config
 {
     public class JwtConfiguration
     {

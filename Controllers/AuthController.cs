@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using mini_umb.Model;
-using mini_umb.Services;
+using SampleApi.Model;
+using SampleApi.Services;
 
-namespace mini_umb.Controllers
+namespace SampleApi.Controllers
 {
     public class AuthController : ControllerBase
     {

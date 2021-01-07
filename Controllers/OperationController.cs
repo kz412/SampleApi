@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using mini_umb.Infrastructure;
+using SampleApi.Infrastructure;
 
-namespace mini_umb.Controllers
+namespace SampleApi.Controllers
 {
     [Authorise]
     public class OperationController : ControllerBase

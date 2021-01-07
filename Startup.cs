@@ -1,15 +1,14 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using mini_umb.Config;
-using mini_umb.Infrastructure;
-using mini_umb.Services;
+using SampleApi.Config;
+using SampleApi.Infrastructure;
+using SampleApi.Services;
 
-namespace mini_umb
+namespace SampleApi
 {
     public class Startup
     {
